@@ -256,7 +256,7 @@ describe("Sell Token", function () {
         await p2p.connect(buyer1).createOrder(buyer1Message, buyer1Signature)
       ).not.to.be.reverted;
 
-      expect(await p2p.getOrder(buyer1Message)).not.to.be.reverted;
+      expect(await p2p.getOrder(0)).not.to.be.reverted;
     });
   });
   describe("Events", function () {
@@ -290,7 +290,7 @@ describe("Sell Token", function () {
         await p2p.connect(buyer1).createOrder(buyer1Message, buyer1Signature)
       ).not.to.be.reverted;
 
-      const order = await p2p.getOrder(buyer1Message);
+      const order = await p2p.getOrder(0);
       await expect(p2p.connect(seller).approveOrder(0))
         .to.emit(p2p, "Action")
         .withArgs(
